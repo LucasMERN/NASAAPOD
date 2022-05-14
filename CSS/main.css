@@ -1,15 +1,32 @@
-img{
+html { 
+    background: url('https://apod.nasa.gov/apod/image/2205/MercuryTailPleiades_Voltmer_1448.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: aliceblue;
+  }
+
+label {
     display: block;
-    width: 10%;
-    margin: 2rem 0;
+    font: 1rem 'Fira Sans', sans-serif;
 }
 
-h2, h3{
-    font-size: larger;
-    font-weight: bold;
+input, label {
+    margin: .4rem 0;
 }
 
-p{
-    margin: 1rem 0;
-    padding-right: 50rem;
+body{
+    margin: 5rem 0 0 5rem;
+    border-radius: 20px;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.662);
+    width: 30rem;
 }
+
+@media screen and (max-width: 600px) {
+    body {
+      margin: 5rem 0 0 0;
+    }
+  }
+  

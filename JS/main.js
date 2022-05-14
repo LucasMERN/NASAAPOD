@@ -1,41 +1,26 @@
+let today = new Date();
+let dd = String(today.getDate()).padStart(2, '0');
+let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+let yyyy = today.getFullYear();
+
+today = yyyy + '-' + mm + '-' + dd;
+
+document.querySelector('input').setAttribute('max', today);
+
 document.querySelector('button').addEventListener('click', getPicture)
 
 function getPicture(){
     let date = document.querySelector('input').value
 
-fetch(`https://api.nasa.gov/planetary/apod?api_key=X9pVz645JEUov8cYHLp3tOJ6doOuZwTngbDGN0dQ`)
-    .then(res => res.json())
-    .then(data => {
-        console.log(data);
-    })
+    fetch(`https://api.nasa.gov/planetary/apod?api_key=X9pVz645JEUov8cYHLp3tOJ6doOuZwTngbDGN0dQ&date=${date}`)
+        .then(res => res.json())
+        .then(data => {
+            document.querySelector('html').style.background = "url("+data.hdurl+") no-repeat center center fixed"
+            document.querySelector('.title').innerText = data.title
+            document.querySelector('.story').innerText = data.explanation
+        })
 
-    .catch(err => {
-        console.log(`error ${err}`)
-    });
+        .catch(err => {
+            console.log(`error ${err}`)
+        });
 };
-
-
-
-
-
-
-
-// document.querySelector('button').addEventListener('click', getPicture)
-// let date = document.querySelector('input').value
-
-// async function getPicture(){    
-// await fetch(`https://api.nasa.gov/planetary/apod?api_key=X9pVz645JEUov8cYHLp3tOJ6doOuZwTngbDGN0dQ`).then(res => res.json()).catch(err => {
-//         console.log(`error ${err}`)
-//     });
-//     nasaObject = data.map(info => {
-//         let rObj = {
-//             date: info.date,
-//             image: info.hdurl,
-//             description: info.explanation,
-//         }
-//         return rObj;
-//     });
-//     document.getElementById('').innerText = nasaObject.date
-//     document.getElementById('').src = nasaObject.image
-//     document.getElementById('').innerText = nasaObject.description
-// };
